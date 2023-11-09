@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import store.xianglin.sb2.service.TestService;
 
+import javax.annotation.Resource;
 import java.util.Optional;
 
 @Controller
@@ -16,6 +18,8 @@ public class DemoController {
 
     @Autowired
     private DemoMapper demoMapper;
+    @Resource
+    private TestService testService;
 
     @RequestMapping("/hello/{id}")
     @ResponseBody
@@ -23,4 +27,9 @@ public class DemoController {
         return Optional.ofNullable(demoMapper.selectByPrimaryKey(id)).map(Demo::toString).orElse("empty String");
     }
 
+    @RequestMapping("/test")
+    @ResponseBody
+    public String test() {
+        return testService.test();
+    }
 }
