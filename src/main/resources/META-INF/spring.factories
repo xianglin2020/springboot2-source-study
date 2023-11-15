@@ -1,1 +1,3 @@
 org.springframework.context.ApplicationContextInitializer=store.xianglin.sb2.Initializer.FirstInitializer
+
+org.springframework.context.ApplicationListener=store.xianglin.sb2.listener.FirstListener,store.xianglin.sb2.listener.FourthListener
