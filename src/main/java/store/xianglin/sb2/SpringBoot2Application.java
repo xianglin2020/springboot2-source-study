@@ -3,7 +3,9 @@ package store.xianglin.sb2;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.util.Assert;
 
 import java.util.Properties;
 
@@ -16,6 +18,7 @@ public class SpringBoot2Application {
         var properties = new Properties();
         properties.setProperty("property", "property from DefaultProperties");
         springApplication.setDefaultProperties(properties);
-        springApplication.run(args);
+        var context = springApplication.run(args);
+        Assert.notNull(context.getBean("componentSuperConfiguration"));
     }
 }
